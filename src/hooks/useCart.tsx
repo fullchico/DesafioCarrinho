@@ -40,11 +40,9 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       );
 
       const stock = await api.get(`/stock/${productId}`);
-
+      //
       const stockAmount = stock.data.amount;
       const currentAmount = productExists ? productExists.amount : 0;
-
-      console.log(currentAmount);
 
       const amount = currentAmount + 1;
 
@@ -95,6 +93,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     }
   };
 
+  // metodo de incremento do produto no carrinho
   const updateProductAmount = async ({
     productId,
     amount,

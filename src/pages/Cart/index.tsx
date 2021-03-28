@@ -19,9 +19,11 @@ interface Product {
 }
 
 const Cart = (): JSX.Element => {
+  // chamando hook context
   const { cart, removeProduct, updateProductAmount } = useCart();
 
   const cartFormatted = cart.map((product) => ({
+    // formatando valores e incrimentando funcionalidade no objeto array(subtotal, priceFormatted)
     ...product,
     priceFormatted: formatPrice(product.price),
     subTotal: formatPrice(product.price * product.amount),
@@ -34,6 +36,7 @@ const Cart = (): JSX.Element => {
 
   function handleProductIncrement(product: Product) {
     updateProductAmount({
+      // incrementando quantidade do mesmo produto no carrinho
       productId: product.id,
       amount: product.amount + 1,
     });
@@ -41,6 +44,7 @@ const Cart = (): JSX.Element => {
 
   function handleProductDecrement(product: Product) {
     updateProductAmount({
+      // dimunuindo quantidade do mesmo produto no carrinho
       productId: product.id,
       amount: product.amount - 1,
     });
